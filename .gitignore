@@ -56,3 +56,7 @@ docs.metadata
 
 # Virtual environment
 env/
+
+# Terraform 
+terraform/.terraform/*
+terraform/.terraform.lock.hcl
