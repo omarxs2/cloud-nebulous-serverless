@@ -45,3 +45,5 @@ docs.metadata
 
 # Virtual environment
 env/
+
+terraform/
