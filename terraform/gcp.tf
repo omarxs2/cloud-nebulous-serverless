@@ -14,13 +14,13 @@ provider "google" {
 # Cloud Run
 
 resource "google_cloud_run_service" "cloudrun" {
-  name     = "cloudrun-service"
+  name     = "cloudrun-service-test-1"
   location = "us-central1"
 
   template {
     spec {
       containers {
-        image = "gcr.io/devops-343007/translate-app"
+        image = "gcr.io/devops-343007/translate-app:latest"
       }
     }
   }
