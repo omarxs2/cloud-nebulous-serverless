@@ -1,0 +1,19 @@
+### Copyright 2022 Omar Suleiman
+
+steps:
+
+### Build
+  - id: 'build'
+    name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/devops-343007/translate-app:latest', './cloud/python' ]
+
+## Push / Publish
+  - id: 'push'
+    name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/devops-343007/translate-app:latest']
+
+
+### Timeout
+timeout: "1600s"
+options:
+ logging: CLOUD_LOGGING_ONLY
