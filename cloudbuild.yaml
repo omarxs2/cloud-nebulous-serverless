@@ -2,15 +2,40 @@
 
 steps:
 
+# ### Build
+#   - id: 'build'
+#     name: 'gcr.io/cloud-builders/docker'
+#     args: ['build', '-t', 'gcr.io/devops-343007/translate-app:latest', 'cloud/python/' ]
+
+# ## Push / Publish
+#   - id: 'push'
+#     name: 'gcr.io/cloud-builders/docker'
+#     args: ['push', 'gcr.io/devops-343007/translate-app:latest']
+
+
 ### Build
+
   - id: 'build'
     name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'gcr.io/devops-343007/translate-app:latest', 'cloud/python/' ]
+    entrypoint: 'bash'
+    args: 
+      - '-c'
+      - |
+          docker build -t gcr.io/devops-343007/translate-app ./cloud/python
 
-## Push / Publish
-  - id: 'push'
+
+### Test
+
+
+### Publish
+  - id: 'publish'
     name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'gcr.io/devops-343007/translate-app:latest']
+    entrypoint: 'bash'
+    args: 
+      - '-c'
+      - |
+          docker push gcr.io/devops-343007/translate-app
+
 
 
 ### Timeout
