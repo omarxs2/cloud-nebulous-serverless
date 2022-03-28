@@ -5,7 +5,7 @@ steps:
 ### Build
   - id: 'build'
     name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'gcr.io/devops-343007/translate-app:latest', './cloud/python' ]
+    args: ['build', '-t', 'gcr.io/devops-343007/translate-app:latest', 'cloud/python' ]
 
 ## Push / Publish
   - id: 'push'
