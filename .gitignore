@@ -60,3 +60,5 @@ env/
 # Terraform 
 terraform/.terraform/*
 terraform/.terraform.lock.hcl
+terraform/.terraform.lock.hcl
+terraform/.terraform/providers/registry.terraform.io/hashicorp/google/4.15.0/windows_amd64/terraform-provider-google_v4.15.0_x5.exe
