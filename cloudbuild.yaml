@@ -5,13 +5,35 @@ steps:
 ### Build
   - id: 'build'
     name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'gcr.io/omar-devops/translate-app-img:1.0.0', './cloud/python' ]
+    args: ['build', '-t', 'gcr.io/omar-devops/translate-app-img:${SHORT_SHA}', './cloud/python' ]
 
 ## Push / Publish
   - id: 'push'
     name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'gcr.io/omar-devops/translate-app-img:1.0.0']
+    args: ['push', 'gcr.io/omar-devops/translate-app-img:${SHORT_SHA}']
 
+### Deploy
+  - id: 'pre-deploy'
+    name: 'gcr.io/cloud-builders/gcloud'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+          sed -i 's|gcr.io/omar-devops/translate-app-img:.*|gcr.io/omar-devops/translate-app-img:${SHORT_SHA}|' ./terraform/gcp.tf
+
+
+# Run terraform
+  - id: 'deploy'
+    name: 'gcr.io/omar-devops/terraform-controller'
+    entrypoint: 'bash'
+    dir: 'terraform'
+    args:
+      - '-c'
+      - |
+          yes | terraform apply
+    # entrypoint: 'terraform' 
+    # args: ['yes','|','apply']
+             
 
 # ### Build
 
