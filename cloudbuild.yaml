@@ -24,7 +24,7 @@ steps:
 
 # Run terraform
   - id: 'deploy'
-    name: 'gcr.io/omar-devops/terraform-controller'
+    name: 'gcr.io/omar-devops/terraform'
     entrypoint: 'bash'
     dir: 'terraform'
     args:
