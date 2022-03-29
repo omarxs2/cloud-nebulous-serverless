@@ -5,12 +5,12 @@ steps:
 ### Build
   - id: 'build'
     name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'gcr.io/omar-devops/translate-app-img:latest', './cloud/python' ]
+    args: ['build', '-t', 'gcr.io/omar-devops/translate-app-img:1.0.0', './cloud/python' ]
 
 ## Push / Publish
   - id: 'push'
     name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'gcr.io/omar-devops/translate-app-img:latest']
+    args: ['push', 'gcr.io/omar-devops/translate-app-img:1.0.0']
 
 
 # ### Build

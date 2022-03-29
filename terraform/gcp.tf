@@ -13,7 +13,7 @@ resource "google_cloud_run_service" "cloudrun" {
   template {
     spec {
       containers {
-        image = "gcr.io/omar-devops/translate-app-img:latest"
+        image = "gcr.io/omar-devops/translate-app-img:1.0.0"
       } 
     }
   }
