@@ -1,27 +1,20 @@
-terraform {
-  required_providers {
-    google = {
-      source  = "hashicorp/google"
-      version = "~> 4.0"
-    }
-  }
-}
 
 provider "google" {
     project = "omar-devops"
+    credentials = "${file("credentials.json")}"
 }
 
 # Cloud Run
 
 resource "google_cloud_run_service" "cloudrun" {
-  name     = "cloudrun-service-test-2"
+  name     = "translate-app-cloudrun-service"
   location = "us-central1"
 
   template {
     spec {
       containers {
         image = "gcr.io/omar-devops/translate-app-img:latest"
-      }
+      } 
     }
   }
 
