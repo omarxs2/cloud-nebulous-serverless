@@ -5,12 +5,12 @@ steps:
 ### Build
   - id: 'build'
     name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'gcr.io/devops-343007/translate-app:latest', './cloud/python' ]
+    args: ['build', '-t', 'gcr.io/omar-devops/translate-app-img:latest', './cloud/python' ]
 
 ## Push / Publish
   - id: 'push'
     name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'gcr.io/devops-343007/translate-app:latest']
+    args: ['push', 'gcr.io/omar-devops/translate-app-img:latest']
 
 
 # ### Build
@@ -21,7 +21,7 @@ steps:
 #     args: 
 #       - '-c'
 #       - |
-#           docker build -t gcr.io/devops-343007/translate-app ./cloud/python
+#           docker build -t gcr.io/omar-devops/translate-app-img ./cloud/python
 
 
 # ### Test
@@ -34,7 +34,7 @@ steps:
 #     args: 
 #       - '-c'
 #       - |
-#           docker push gcr.io/devops-343007/translate-app
+#           docker push gcr.io/omar-devops/translate-app-img
 
 
 
