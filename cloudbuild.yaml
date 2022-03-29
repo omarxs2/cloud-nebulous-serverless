@@ -12,15 +12,6 @@ steps:
     name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'gcr.io/omar-devops/translate-app-img:${SHORT_SHA}']
 
-### Deploy
-  - id: 'pre-deploy'
-    name: 'gcr.io/cloud-builders/gcloud'
-    entrypoint: 'bash'
-    args:
-      - '-c'
-      - |
-          sed -i 's|gcr.io/omar-devops/translate-app-img:.*|gcr.io/omar-devops/translate-app-img:${SHORT_SHA}|' ./terraform/gcp.tf
-
 
 # Run terraform
   - id: 'deploy'
@@ -30,7 +21,9 @@ steps:
     args:
       - '-c'
       - |
-          yes | terraform apply
+          sed -i 's|gcr.io/omar-devops/translate-app-img:.*|gcr.io/omar-devops/translate-app-img:${SHORT_SHA}|' ./terraform/gcp.tf
+
+          terraform apply
     # entrypoint: 'terraform' 
     # args: ['yes','|','apply']
              
